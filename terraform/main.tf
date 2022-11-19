@@ -1,23 +1,23 @@
-data "azurerm_client_config" "current" {}
+# You can use the azurerm_client_config data resource to dynamically
+# extract connection settings from the provider configuration.
 
-#Create Resource Group
-resource "azurerm_resource_group" "rg" {
-  name     = "kart-dev-rg-1"
-  location = "centralindia"
-}
+data "azurerm_client_config" "core" {}
 
-#Create Virtual Network
-resource "azurerm_virtual_network" "vnet" {
-  name                = "kartdev-vnet-1"
-  address_space       = ["192.168.0.0/16"]
-  location            = "centralindia"
-  resource_group_name = azurerm_resource_group.rg.name
-}
+# Call the caf-enterprise-scale module directly from the Terraform Registry
+# pinning to the latest version
 
-# Create Subnet
-resource "azurerm_subnet" "subnet" {
-  name                 = "kartdev-subnet-1"
-  resource_group_name  = azurerm_resource_group.rg.name
-  virtual_network_name = azurerm_virtual_network.vnet.name
-  address_prefixes     = ["192.168.0.0/24"]
+module "enterprise_scale" {
+  source  = "Azure/caf-enterprise-scale/azurerm"
+  version = "2.4.1"
+
+  providers = {
+    azurerm              = azurerm
+    azurerm.connectivity = azurerm
+    azurerm.management   = azurerm
+  }
+
+  root_parent_id = data.azurerm_client_config.core.tenant_id
+  root_id        = "kartlab"
+  root_name      = "Kartikesh Labs"
+
 }
