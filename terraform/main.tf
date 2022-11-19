@@ -6,22 +6,22 @@ terraform {
     key                  = "kartazcaftfstatedev.tfstate"
   }
 }
- 
+
 provider "azurerm" {
   # The "feature" block is required for AzureRM provider 2.x.
   # If you're using version 1.x, the "features" block is not allowed.
   version = "~>2.0"
   features {}
 }
- 
+
 data "azurerm_client_config" "current" {}
- 
+
 #Create Resource Group
 resource "azurerm_resource_group" "rg" {
   name     = "kartdevrg1"
   location = "centralindia"
 }
- 
+
 #Create Virtual Network
 resource "azurerm_virtual_network" "vnet" {
   name                = "kartdev-vnet-1"
@@ -29,7 +29,7 @@ resource "azurerm_virtual_network" "vnet" {
   location            = "centralindia"
   resource_group_name = azurerm_resource_group.rg.name
 }
- 
+
 # Create Subnet
 resource "azurerm_subnet" "subnet" {
   name                 = "kartdev-subnet-1"
