@@ -10,7 +10,7 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "~> 2.0"
     }
-    features {}
+    # features {}
   }
 }
 
