@@ -8,13 +8,13 @@
 
 variable "subscription_id_management" {
   type        = string
-  default     = ""
+  default     = "b551f55f-5d99-49bb-8338-4b9b39d7170f"
   description = "Sets the Subscription ID to use for Management resources."
 }
 
 variable "subscription_id_connectivity" {
   type        = string
-  default     = ""
+  default     = "e2d45a61-51b0-49d7-956a-0a4b09fc3a9c"
   description = "Sets the Subscription ID to use for Connectivity resources."
 }
 
