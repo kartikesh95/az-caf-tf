@@ -1,4 +1,4 @@
-data "azurerm_client_config" "current" {}
+data "azurerm_client_config" "core" {}
 
 # Declare the Terraform Module for Cloud Adoption Framework
 # Enterprise-scale and provide a base configuration.
