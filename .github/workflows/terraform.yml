@@ -5,6 +5,7 @@ on:
     branches:
     - main
     - dev
+    - 3-testing-is-and-pr
   pull_request:
  
 jobs:
