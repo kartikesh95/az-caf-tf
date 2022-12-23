@@ -16,4 +16,7 @@ module "enterprise_scale" {
   root_id        = "kartlabs"
   root_name      = "Kartikesh Labs"
 
+  deploy_management_resources = true
+  subscription_id_management  = data.azurerm_client_config.core.subscription_id
+
 }
