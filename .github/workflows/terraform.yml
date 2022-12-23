@@ -4,7 +4,7 @@ on:
   push:
     branches:
     - main
-    - 1-my-first-issue
+    - dev
   pull_request:
  
 jobs:
@@ -57,7 +57,7 @@ jobs:
         tf_actions_working_dir: "./terraform"
  
     - name: Terraform Apply
-      if: github.ref == 'refs/heads/main'
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'
       uses: hashicorp/terraform-github-actions@master
       with:
         tf_actions_version: 1.1.8
